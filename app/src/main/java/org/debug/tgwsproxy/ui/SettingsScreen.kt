@@ -255,9 +255,6 @@ fun SettingsScreen(
                 // ограничено ротацией (1 МБ + копия), а включённый заранее лог
                 // помогает разобраться с проблемой, которую уже не повторить.
                 FieldLabel(stringResource(R.string.hint_log_applies))
-                // «—» готовим заранее: лямбда `ifEmpty { … }` не composable,
-                // stringResource() внутри неё не вызвать.
-                val dash = stringResource(R.string.value_none)
             }
 
             SectionCard(
@@ -353,11 +350,15 @@ private fun diagnosticsText(
         lines += stringResource(R.string.diag_traffic, state.stats.inbound,
             state.stats.outbound)
     }
-    lines += when {
-        else -> stringResource(R.string.diag_log_off)
-    }
-    if (log.error.isNotEmpty()) {
-        lines += stringResource(R.string.diag_log_error, log.error)
+    // «Логов пока нет» показываем ТОЛЬКО когда строк действительно нет: превью
+    // ниже тогда пустое, и подпись объясняет почему. Есть строки — они сами себя
+    // показывают, и отдельная подпись не нужна (раньше она стояла безусловно и
+    // спорила с превью). Строки про путь и размер файла, ошибку чтения и logcat
+    // убраны вместе со своими строками перевода по правке пользователя; путь
+    // файла неизменен и описан в README: внешняя папка приложения,
+    // Android/data/<пакет>/files/proxy_log.txt, забирается adb pull.
+    if (!log.hasLines) {
+        lines += stringResource(R.string.diag_log_off)
     }
     lines += stringResource(R.string.diag_verbose,
         stringResource(if (log.verbose) R.string.value_on else R.string.value_off))

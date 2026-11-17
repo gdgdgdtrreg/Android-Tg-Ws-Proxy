@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    English translations. The default language (Russian) lives in `values/`;
+    this folder only overrides it for `en*` locales.
 
+    Keep in sync with values/strings.xml: the same names, the same positional
+    placeholders (%1$s, %2$d). `python3 tools/check_localization.py` reports any
+    missing name, extra name or placeholder mismatch.
+
+    Curly quotes are used on purpose: a straight apostrophe inside a string
+    resource must be escaped (\'), and it is easy to forget.
+-->
 <resources>
 
     <!-- =================================================================== -->
@@ -100,9 +110,9 @@
     <string name="diag_uptime">Running for: %1$d s</string>
     <string name="diag_connections">Connections: %1$d (active %2$d), ws errors: %3$d</string>
     <string name="diag_traffic">Traffic: in %1$s, out %2$s</string>
-    <string name="diag_log_off">No log file yet (the proxy has not been started) — the lines below come from the in-process buffer</string>
-    <string name="diag_verbose">Verbose log: %1$s</string>
-    <string name="btn_copy_log">Copy log</string>
+    <string name="diag_log_off">No logs yet (the proxy has not been started)</string>
+    <string name="diag_verbose">Detailed logs: %1$s</string>
+    <string name="btn_copy_log">Copy logs</string>
     <string name="btn_battery">Disable sleep</string>
 
     <!-- =================================================================== -->
