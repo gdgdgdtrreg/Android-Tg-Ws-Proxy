@@ -94,7 +94,7 @@
     <string name="section_perf">Performance and logs</string>
     <string name="field_buffer">Buffer, KB:</string>
     <string name="field_pool">WS session pool:</string>
-    <string name="switch_verbose">Verbose log (DEBUG)</string>
+    <string name="switch_verbose">Verbose log</string>
     <string name="hint_log_applies">Applied after “Save” (a running proxy restarts).</string>
 
     <!-- =================================================================== -->
