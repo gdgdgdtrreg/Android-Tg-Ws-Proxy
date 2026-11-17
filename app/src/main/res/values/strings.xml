@@ -103,6 +103,7 @@
     <string name="diag_connections">Соединений: %1$d (активных %2$d), ошибок ws: %3$d</string>
     <string name="diag_traffic">Трафик: Вход. %1$s, Исход. %2$s</string>
     <string name="diag_log_off">Логов пока нет (прокси ещё не запускался)</string>
+    <string name="diag_log_error">Запись лога не началась: %1$s</string>
     <string name="diag_verbose">Подробные логи: %1$s</string>
     <string name="btn_copy_log">Копировать логи</string>
     <string name="btn_battery">Отключить сон</string>

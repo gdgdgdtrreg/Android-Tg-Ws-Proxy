@@ -86,7 +86,6 @@
     <string name="field_pool">WS session pool:</string>
     <string name="switch_verbose">Verbose log (DEBUG)</string>
     <string name="hint_log_applies">Applied after “Save” (a running proxy restarts).</string>
-    <string name="hint_log_path">The file is always written: %1$s — app-specific external folder, no storage permission needed. The lines are shown in “Diagnostics”, “Copy log” puts them on the clipboard, and the whole file can be pulled with adb pull.</string>
 
     <!-- =================================================================== -->
     <!-- Diagnostics                                                          -->
@@ -101,8 +100,7 @@
     <string name="diag_uptime">Running for: %1$d s</string>
     <string name="diag_connections">Connections: %1$d (active %2$d), ws errors: %3$d</string>
     <string name="diag_traffic">Traffic: in %1$s, out %2$s</string>
-    <string name="diag_log_off">No log yet (the proxy has not been started)</string>
-    <string name="diag_log_error">File logging did not start: %1$s</string>
+    <string name="diag_log_off">No log file yet (the proxy has not been started) — the lines below come from the in-process buffer</string>
     <string name="diag_verbose">Verbose log: %1$s</string>
     <string name="btn_copy_log">Copy log</string>
     <string name="btn_battery">Disable sleep</string>

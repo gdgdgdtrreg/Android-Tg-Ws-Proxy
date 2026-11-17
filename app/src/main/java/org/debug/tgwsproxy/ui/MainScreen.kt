@@ -33,9 +33,9 @@ import org.debug.tgwsproxy.ProxyUiState
 import org.debug.tgwsproxy.R
 
 /**
- * Главный экран: заголовок, круг-кнопка, статус с адресом, подсказка и кнопки —
- * «копировать», «В telegram», «настройки» (макет прежней Kivy-версии) и
- * «о приложении» с лицензиями.
+ * Главный экран: заголовок, круг-кнопка, статус с адресом, подсказка и три
+ * кнопки — тот же макет, что был в Kivy-версии. Экран «О приложении»
+ * открывается из настроек, см. [SettingsScreen].
  *
  * Все подписи берутся из `res/values/strings.xml` (перевод — `values-en/`).
  *
@@ -52,7 +52,6 @@ fun MainScreen(
     onCopy: () -> Unit,
     onTelegram: () -> Unit,
     onSettings: () -> Unit,
-    onAbout: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val bigStatus = when (state.state) {
@@ -151,23 +150,12 @@ fun MainScreen(
             )
         }
         Spacer(Modifier.height(10.dp))
-        Row(
+        TgwsButton(
+            text = stringResource(R.string.btn_settings),
+            color = Palette.Card,
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
-        ) {
-            TgwsButton(
-                text = stringResource(R.string.btn_settings),
-                color = Palette.Card,
-                modifier = Modifier.weight(1f),
-                onClick = onSettings,
-            )
-            TgwsButton(
-                text = stringResource(R.string.btn_about),
-                color = Palette.Card,
-                modifier = Modifier.weight(1f),
-                onClick = onAbout,
-            )
-        }
+            onClick = onSettings,
+        )
     }
 }
 

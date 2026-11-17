@@ -72,6 +72,7 @@ fun SettingsScreen(
     onCopyLog: () -> Unit,
     onAddTile: () -> Unit,
     tileRequestSupported: Boolean,
+    onAbout: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var settings by remember { mutableStateOf(initial) }
@@ -309,6 +310,16 @@ fun SettingsScreen(
                 color = Palette.Accent,
                 modifier = Modifier.fillMaxWidth(),
                 onClick = { onSave(settings) },
+            )
+            // «О приложении» живёт в настройках, а не на главном экране: там
+            // ему место (лицензии и версии — это про настройки/о программе),
+            // и главный экран остаётся таким, каким был.
+            Spacer(Modifier.height(10.dp))
+            TgwsButton(
+                text = stringResource(R.string.btn_about),
+                color = Palette.Card,
+                modifier = Modifier.fillMaxWidth(),
+                onClick = onAbout,
             )
             Spacer(Modifier.height(12.dp))
         }

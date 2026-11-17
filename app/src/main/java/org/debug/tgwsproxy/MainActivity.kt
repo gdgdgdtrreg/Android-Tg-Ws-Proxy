@@ -200,7 +200,6 @@ private fun AppRoot(activity: MainActivity) {
                 },
                 onTelegram = { openInTelegram(activity, state.link) { toast = it } },
                 onSettings = { screen = SCREEN_SETTINGS },
-                onAbout = { screen = SCREEN_ABOUT },
             )
         } else if (screen == SCREEN_ABOUT) {
             // Экран «О приложении»: версия, GPL-3.0, адрес исходного кода и
@@ -208,7 +207,8 @@ private fun AppRoot(activity: MainActivity) {
             AboutScreen(
                 state = state,
                 modifier = content,
-                onBack = { screen = SCREEN_MAIN },
+                // открыт из настроек — туда и возвращаемся
+                onBack = { screen = SCREEN_SETTINGS },
             )
         } else {
             SettingsScreen(
@@ -234,6 +234,7 @@ private fun AppRoot(activity: MainActivity) {
                     }
                     screen = SCREEN_MAIN
                 },
+                onAbout = { screen = SCREEN_ABOUT },
                 onBatterySettings = { requestBatteryExemption(activity) },
                 onCopyLog = {
                     if (!logInfo.hasLines) {

@@ -44,11 +44,19 @@ import org.debug.tgwsproxy.R
  * Экран «О приложении»: версия, лицензия приложения, где взять исходный код и
  * сторонние компоненты со своими лицензиями.
  *
- * Полные тексты лицензий лежат в `res/raw/*.txt`, а не в `strings.xml`: тексту
- * GPL-3.0 (34 КБ) не нужно экранирование кавычек, апострофов и знаков процента,
- * а переводить юридический текст нельзя — он обязан совпадать с каноническим.
- * Читаются файлы через `resources.openRawResource()` и только когда раздел
- * раскрыт, поэтому в память попадает один текст за раз.
+ * Полные тексты лицензий лежат файлами `.txt` в каталоге `res/raw`, а не в
+ * `strings.xml`: тексту GPL-3.0 (34 КБ) не нужно экранирование кавычек,
+ * апострофов и знаков процента, а переводить юридический текст нельзя — он
+ * обязан совпадать с каноническим. Читаются файлы через
+ * `resources.openRawResource()` и только когда раздел раскрыт, поэтому в
+ * память попадает один текст за раз.
+ *
+ * Правящему файл: комментарии Kotlin ВЛОЖЕННЫЕ, поэтому внутри комментария
+ * нельзя писать слеш со звёздочкой подряд — глоб вида «каталог/» плюс «*.txt»
+ * даёт эту пару, открывает вложенный комментарий, и закрывающая пара KDoc
+ * закрывает только его: внешний комментарий остаётся открытым и «съедает»
+ * весь файл до конца (класс перестаёт существовать для компилятора). Пишите
+ * каталог и расширение раздельно, как выше.
  *
  * Для GPL-3.0 этого набора достаточно: лицензия требует передать получателю
  * вместе с объектным кодом текст лицензии, уведомления об авторских правах и
@@ -61,7 +69,7 @@ import org.debug.tgwsproxy.R
  * Не строковый ресурс: это не переводимый текст, а часть лицензионного
  * уведомления, и меняться он должен вместе с публикацией проекта.
  */
-private const val SOURCE_URL = "https://github.com/gdgdgdtrreg/Tg-Ws-Proxy-Android"
+private const val SOURCE_URL = "https://github.com/gdgdgdtrreg/Android-Tg-Ws-Proxy"
 
 private const val TAG = "TGWS"
 
@@ -233,7 +241,12 @@ fun AboutScreen(
                 Text(stringResource(R.string.about_third_party_summary),
                     fontSize = 12.sp, color = Palette.Muted)
                 Spacer(Modifier.height(8.dp))
-                COMPONENTS.forEachIndexed { index, item ->
+                // for по withIndex(), а НЕ forEachIndexed: лямбда у forEachIndexed
+                // обычная, а ComponentRow — @Composable; из обычной лямбды
+                // композабл вызывать нельзя («@Composable invocations can only
+                // happen from the context of a @Composable function»). Цикл for
+                // в теле композабла — можно.
+                for ((index, item) in COMPONENTS.withIndex()) {
                     ComponentRow(
                         item = item,
                         expanded = expandedComponent == index,

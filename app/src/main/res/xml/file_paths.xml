@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Какие папки приложения разрешено отдавать наружу через FileProvider
+    (androidx.core.content.FileProvider объявлен в AndroidManifest.xml).
+
+    Нужно это для одной задачи: отдать пользователю лог без root. Файл
+    proxy_log.txt лежит во внешней приватной папке (external-files-path), а
+    снимок отчёта, который собирается по кнопке «Отправить отчёт», — в кэше
+    (cache-path). Пути заданы относительно этих корней, поэтому «.» означает
+    «всё содержимое папки».
+
+    Внутренняя папка (files-path) перечислена на случай, когда внешнее
+    хранилище недоступно и ProxyLog.dir() откатился на context.filesDir.
+
+    ВАЖНО: FileProvider не умеет отдавать файлы, которых нет в этом списке, —
+    при попытке он бросает IllegalArgumentException.
+-->
+<paths>
+    <external-files-path name="logs" path="." />
+    <files-path name="internal" path="." />
+    <cache-path name="reports" path="." />
+</paths>
