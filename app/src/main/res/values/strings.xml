@@ -99,7 +99,7 @@
     <string name="section_perf">Производительность и логи</string>
     <string name="field_buffer">Буфер, КБ:</string>
     <string name="field_pool">Пул WS-сессий:</string>
-    <string name="switch_verbose">Подробный лог (DEBUG)</string>
+    <string name="switch_verbose">Подробный лог</string>
     <string name="hint_log_applies">Применяется после сохранения (работающий прокси перезапустится).</string>
 
     <!-- =================================================================== -->
