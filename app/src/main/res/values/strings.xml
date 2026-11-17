@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    Все строки, которые видит пользователь. Русский — язык по умолчанию (он в
-    `values/`, без квалификатора), английский — в `values-en/`.
 
-    Правила, которых стоит держаться при правке:
-      * плейсхолдеры пишем ПОЗИЦИОННО (%1$s, %2$d) — тогда перевод можно
-        переставлять, и `getString(id, a, b)` не зависит от порядка слов;
-      * имена ошибок `error_*` совпадают с ключами, которые отдаёт Python-мост
-        (`error_key` в proxy_runner.py): перевод один, а источника два — Kotlin и ядро;
-      * сообщения `Log.*` в коде остаются русскими и сюда НЕ выносятся: это лог
-        для разработчика, а не текст интерфейса;
-      * сверить оба файла и найти забытые строки в коде помогает
-        `python3 tools/check_localization.py`.
--->
 <resources>
 
     <!-- =================================================================== -->
@@ -46,7 +33,7 @@
     <string name="main_status_error">Ошибка</string>
     <string name="main_status_stopped">Отключено</string>
     <string name="main_service_dead">Сервис не отвечает (убит системой?).</string>
-    <string name="main_connections">Соединений: %1$d (активных %2$d, ws %3$d, http/2 %4$d, cf %5$d) · in %6$s · out %7$s</string>
+    <string name="main_connections">Соединений: %1$d (активных %2$d, ws %3$d, http/2 %4$d, cf %5$d) · Вход. %6$s · Исход. %7$s</string>
     <string name="btn_copy">копировать</string>
     <string name="btn_telegram">В telegram</string>
     <string name="btn_settings">настройки</string>
@@ -101,7 +88,6 @@
     <string name="field_pool">Пул WS-сессий:</string>
     <string name="switch_verbose">Подробный лог (DEBUG)</string>
     <string name="hint_log_applies">Применяется после сохранения (работающий прокси перезапустится).</string>
-    <string name="hint_log_path">Файл пишется всегда: %1$s — внешняя папка приложения, разрешение на хранилище не нужно. Строки видны в «Диагностике», «Копировать лог» кладёт их в буфер, файл целиком забирается adb pull.</string>
 
     <!-- =================================================================== -->
     <!-- Диагностика                                                          -->
@@ -115,14 +101,13 @@
     <string name="diag_core_version">Версия прокси: %1$s</string>
     <string name="diag_uptime">Работает: %1$d c</string>
     <string name="diag_connections">Соединений: %1$d (активных %2$d), ошибок ws: %3$d</string>
-    <string name="diag_traffic">Трафик: in %1$s, out %2$s</string>
+    <string name="diag_traffic">Трафик: Вход. %1$s, Исход. %2$s</string>
     <string name="diag_log_file">Файл лога: %1$s (%2$d КБ)</string>
     <string name="diag_log_missing">Файл %1$s ещё не создан</string>
-    <string name="diag_log_off">Файла лога пока нет (прокси ещё не запускался) — строки ниже берутся из буфера процесса</string>
+    <string name="diag_log_off">Логов пока нет (прокси ещё не запускался)</string>
     <string name="diag_log_error">Запись лога не началась: %1$s</string>
-    <string name="diag_verbose">Подробный лог (DEBUG): %1$s</string>
-    <string name="diag_logcat">Полный лог: logcat, тег PROXY_DEBUG; последние строки — в «Диагностике»</string>
-    <string name="btn_copy_log">Копировать лог</string>
+    <string name="diag_verbose">Подробные логи: %1$s</string>
+    <string name="btn_copy_log">Копировать логи</string>
     <string name="btn_battery">Отключить сон</string>
 
     <!-- =================================================================== -->
@@ -159,7 +144,7 @@
     <string name="notif_error">Ошибка</string>
     <string name="notif_stopped">Прокси остановлен</string>
     <string name="notif_settings_error">Ошибка настроек</string>
-    <string name="notif_running_text">%1$s · in %2$s · out %3$s</string>
+    <string name="notif_running_text">%1$s · Вход. %2$s · Исход. %3$s</string>
     <string name="notif_network_change">Смена сети</string>
     <string name="notif_reconnecting">Переподключение: %1$s</string>
     <string name="action_stop">Остановить</string>
