@@ -18,7 +18,7 @@
 
 Исходный код приложения распространяется под лицензией **GNU GPLv3** (или более поздней версии). Полный текст доступен в файле [LICENSE](LICENSE).
 
-В основе сетевого движка используется оригинальный проект [Flowseal/tg-ws-proxy](https://github.com/Flowseal/tg-ws-proxy) (лицензия MIT), запущенный через среду выполнения [Chaquopy](https://chaquo.com) (лицензия MIT). Подробный список всех включённых библиотек и их лицензий приведён в файле [THIRD-PARTY-LICENSES.md](THIRD-PARTY-LICENSES.md).
+В основе сетевого движка используется оригинальный проект [Flowseal/tg-ws-proxy](https://github.com/Flowseal/tg-ws-proxy) (лицензия MIT), запущенный через среду выполнения [Chaquopy](https://github.com/chaquo/chaquopy) (лицензия MIT). Подробный список всех включённых библиотек и их лицензий приведён в файле [THIRD-PARTY-LICENSES.md](THIRD-PARTY-LICENSES.md).
 
 ---
 
