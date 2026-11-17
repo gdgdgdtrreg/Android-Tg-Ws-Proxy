@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    English translations. The default language (Russian) lives in `values/`;
+    this folder only overrides it for `en*` locales.
+
+    Keep in sync with values/strings.xml: the same names, the same positional
+    placeholders (%1$s, %2$d). `python3 tools/check_localization.py` reports any
+    missing name, extra name or placeholder mismatch.
+
+    Curly quotes are used on purpose: a straight apostrophe inside a string
+    resource must be escaped (\'), and it is easy to forget.
+-->
+<resources>
+
+    <!-- =================================================================== -->
+    <!-- App and Quick Settings tile                                          -->
+    <!-- =================================================================== -->
+    <string name="app_name">TG-WS-Proxy</string>
+    <string name="tile_label">TG-WS-Proxy</string>
+    <string name="tile_running">Running</string>
+    <string name="tile_starting">Starting…</string>
+    <string name="tile_stopping">Stopping…</string>
+    <string name="tile_error">Error: %1$s</string>
+    <string name="tile_off_address">Off · %1$s</string>
+    <string name="tile_off">Off</string>
+    <string name="tile_start_failed">failed to start</string>
+    <string name="tile_added">Tile added to the panel</string>
+    <string name="tile_already_added">The tile is already in the panel</string>
+    <string name="tile_not_added">Tile was not added</string>
+    <string name="tile_request_rejected">The system rejected the request (code %1$d)</string>
+    <string name="tile_need_android13">Android 13+ is required: add the tile from the panel editor</string>
+    <string name="tile_no_manager">The system does not let us manage tiles — add it in the panel editor</string>
+    <string name="tile_manual_hint">Open the panel → “Edit tiles” → TG-WS-Proxy</string>
+
+    <!-- =================================================================== -->
+    <!-- Main screen                                                          -->
+    <!-- =================================================================== -->
+    <string name="main_status_starting">Starting…</string>
+    <string name="main_status_running">Connected</string>
+    <string name="main_status_stopping">Stopping…</string>
+    <string name="main_status_error">Error</string>
+    <string name="main_status_stopped">Disabled</string>
+    <string name="main_service_dead">The service is not responding (killed by the system?).</string>
+    <string name="main_connections">Connections: %1$d (active %2$d, ws %3$d, http/2 %4$d, cf %5$d) · in %6$s · out %7$s</string>
+    <string name="btn_copy">copy</string>
+    <string name="btn_telegram">To Telegram</string>
+    <string name="btn_settings">settings</string>
+    <string name="btn_about">about</string>
+
+    <!-- =================================================================== -->
+    <!-- About screen                                                         -->
+    <!-- =================================================================== -->
+    <string name="about_title">about</string>
+    <string name="about_version">App version: %1$s</string>
+    <string name="about_disclaimer">This project is not affiliated with Telegram Messenger Inc. and is not an official Telegram client.</string>
+    <string name="about_license_title">App license</string>
+    <string name="about_license_summary">GNU General Public License version 3 or later (GPL-3.0-or-later). Copyright (c) 2026 gdgdgdtrreg. The full text is below; the same text ships as the LICENSE file of the source code.</string>
+    <string name="about_show_license">Show license text</string>
+    <string name="about_hide_license">Hide license text</string>
+    <string name="about_source_title">Source code</string>
+    <string name="about_source_summary">The complete corresponding source code of this app — Kotlin, the vendored Python core, resources and build scripts — is available in the repository: %1$s</string>
+    <string name="about_open_repo">Open repository</string>
+    <string name="about_no_browser">No app can open the link — the repository address is shown above.</string>
+    <string name="about_third_party_title">Third-party components</string>
+    <string name="about_third_party_summary">The proxy core, Chaquopy, the Python packages and the Android libraries come under their own licenses (MIT, MIT-0, BSD-3-Clause, Apache-2.0, MPL-2.0, PSF-2.0). Their own license texts and copyright notices ship inside the APK, in the metadata of the installed packages; the full list is in res/raw/notices.txt and in THIRD-PARTY-NOTICES.md of the repository. Tap a row to see the license text. Package versions are the ones pip resolved at build time; the device may get different minor versions.</string>
+    <string name="about_icons_title">Icons</string>
+    <string name="about_icons_summary">The power circle, the notification icon and the launcher background are drawn in this project. The “refresh” arrow and the paper plane outlines for the tile come from Material Symbols (Apache-2.0, Copyright (c) Google).</string>
+
+    <!-- =================================================================== -->
+    <!-- Settings screen                                                      -->
+    <!-- =================================================================== -->
+    <string name="btn_back">Back</string>
+    <string name="settings_title">settings</string>
+    <string name="btn_save">Save</string>
+
+    <string name="section_connection">Connection</string>
+    <string name="field_ip_port">IP address and port:</string>
+    <string name="switch_allow_lan">Access from the local network (0.0.0.0)</string>
+    <string name="field_secret">Secret (32 hex characters):</string>
+    <string name="cd_generate_secret">Generate a new secret</string>
+    <string name="field_fake_tls">Fake TLS domain (optional, ee-secret):</string>
+
+    <string name="section_routing">Telegram routing (DC -> IP)</string>
+    <string name="field_dcs_hint">Lines like 2:149.154.167.220</string>
+    <string name="switch_force_test_dc">Test datacenters (force-test-dc)</string>
+
+    <string name="section_cf">Cloudflare, HTTP/2, TLS</string>
+    <string name="switch_cf_proxy">Enable CF proxy</string>
+    <string name="field_cf_domains">Your CF domains (comma separated):</string>
+    <string name="field_cf_worker">Cloudflare Worker domains:</string>
+    <string name="switch_h2_media">HTTP/2 media multiplexing</string>
+    <string name="switch_no_secure">Disable TLS for CF proxy and CF worker</string>
+
+    <string name="section_perf">Performance and logs</string>
+    <string name="field_buffer">Buffer, KB:</string>
+    <string name="field_pool">WS session pool:</string>
+    <string name="switch_verbose">Verbose log (DEBUG)</string>
+    <string name="hint_log_applies">Applied after “Save” (a running proxy restarts).</string>
+    <string name="hint_log_path">The file is always written: %1$s — app-specific external folder, no storage permission needed. The lines are shown in “Diagnostics”, “Copy log” puts them on the clipboard, and the whole file can be pulled with adb pull.</string>
+
+    <!-- =================================================================== -->
+    <!-- Diagnostics                                                          -->
+    <!-- =================================================================== -->
+    <string name="section_diagnostics">Diagnostics</string>
+    <string name="diag_status_running">Status: the proxy is running (%1$s).</string>
+    <string name="diag_status_starting">Status: starting…</string>
+    <string name="diag_status_stopping">Status: stopping…</string>
+    <string name="diag_status_error">Status: error — %1$s</string>
+    <string name="diag_status_stopped">Status: off.</string>
+    <string name="diag_core_version">proxy version: %1$s</string>
+    <string name="diag_uptime">Running for: %1$d s</string>
+    <string name="diag_connections">Connections: %1$d (active %2$d), ws errors: %3$d</string>
+    <string name="diag_traffic">Traffic: in %1$s, out %2$s</string>
+    <string name="diag_log_file">Log file: %1$s (%2$d KB)</string>
+    <string name="diag_log_missing">File %1$s has not been created yet</string>
+    <string name="diag_log_off">No log file yet (the proxy has not been started) — the lines below come from the in-process buffer</string>
+    <string name="diag_log_error">File logging did not start: %1$s</string>
+    <string name="diag_verbose">Verbose log (DEBUG): %1$s</string>
+    <string name="diag_logcat">Full log: logcat, tag PROXY_DEBUG; the last lines are in “Diagnostics”</string>
+    <string name="btn_copy_log">Copy log</string>
+    <string name="btn_battery">Disable sleep</string>
+
+    <!-- =================================================================== -->
+    <!-- “Quick settings tile” section                                        -->
+    <!-- =================================================================== -->
+    <string name="section_tile">Panel tile</string>
+    <string name="tile_help_request">The TG-WS-Proxy tile turns the proxy on and off with a tap from the panel, without opening the app.</string>
+    <string name="tile_help_manual">The TG-WS-Proxy tile turns the proxy on and off with a tap from the panel, without opening the app. Add it manually: open the panel, tap “Edit tiles” and drag TG-WS-Proxy to the top.</string>
+    <string name="btn_add_tile">Add tile</string>
+
+    <!-- =================================================================== -->
+    <!-- Toasts                                                               -->
+    <!-- =================================================================== -->
+    <string name="toast_link_later">The link appears after the proxy starts</string>
+    <string name="toast_link_copied">Link copied</string>
+    <string name="toast_saved_restarting">Settings saved, the proxy is restarting</string>
+    <string name="toast_saved">Settings saved</string>
+    <string name="toast_log_empty">No log yet: start the proxy — lines are collected from the moment it starts</string>
+    <plurals name="toast_log_copied">
+        <item quantity="one">Copied %1$d log line</item>
+        <item quantity="other">Copied %1$d log lines</item>
+    </plurals>
+
+    <!-- =================================================================== -->
+    <!-- Notifications                                                        -->
+    <!-- =================================================================== -->
+    <string name="channel_name">Proxy</string>
+    <string name="channel_description">State of the local MTProto proxy</string>
+    <string name="notif_running">Proxy is running</string>
+    <string name="notif_starting">Starting…</string>
+    <string name="notif_stopping">Stopping…</string>
+    <string name="notif_error">Error</string>
+    <string name="notif_stopped">Proxy is stopped</string>
+    <string name="notif_settings_error">Settings error</string>
+    <string name="notif_running_text">%1$s · in %2$s · out %3$s</string>
+    <string name="notif_network_change">Network change</string>
+    <string name="notif_reconnecting">Reconnecting: %1$s</string>
+    <string name="action_stop">Stop</string>
+    <string name="notif_system_stopped_title">Proxy stopped by the system</string>
+    <string name="notif_system_stopped_text">Android limited the background work of the service: the time limit is exhausted or a background start is forbidden. Open the app and start the proxy again.</string>
+
+    <!-- =================================================================== -->
+    <!-- Network state (notification subtitle while reconnecting)             -->
+    <!-- =================================================================== -->
+    <string name="net_none">no network</string>
+    <string name="net_unknown">network unknown</string>
+    <string name="net_wifi">Wi-Fi</string>
+    <string name="net_cellular">mobile data</string>
+    <string name="net_ethernet">Ethernet</string>
+    <string name="net_vpn">VPN</string>
+    <string name="net_other">other network</string>
+    <string name="net_no_internet">%1$s without internet access</string>
+    <string name="net_transition">%1$s → %2$s</string>
+
+    <!-- =================================================================== -->
+    <!-- Small values                                                         -->
+    <!-- =================================================================== -->
+    <string name="value_on">on</string>
+    <string name="value_off">off</string>
+    <string name="value_none">—</string>
+
+    <!-- =================================================================== -->
+    <!-- Errors shown by the app                                              -->
+    <!--                                                                      -->
+    <!-- Some of these keys come from the Python core (`error_key` in the      -->
+    <!-- replies of proxy_runner.py); the translation lives here either way,   -->
+    <!-- see Messages.kt.                                                      -->
+    <!-- =================================================================== -->
+    <!-- settings validation before start (Kotlin) -->
+    <string name="error_port_range">The port is out of the 1…65535 range.</string>
+    <string name="error_dc_line">DC line without “:” — %1$s</string>
+    <!-- the system refused to start the service (Kotlin) -->
+    <string name="error_start_denied">Android forbade %1$s from the background — open the app.</string>
+    <string name="error_no_permission">No permission to %1$s: %2$s</string>
+    <string name="error_generic">Failed to %1$s: %2$s</string>
+    <string name="what_start">start the proxy</string>
+    <string name="what_restart">restart the proxy</string>
+    <string name="what_stop">stop the proxy</string>
+    <!-- the Python bridge is unavailable (Kotlin) -->
+    <string name="error_python_unavailable">The Python core is unavailable: %1$s</string>
+    <string name="error_stop_failed">Stop failed: %1$s</string>
+    <!-- keys sent by the Python core (proxy_runner.py) -->
+    <string name="error_settings_json">Could not parse the settings: %1$s</string>
+    <string name="error_settings_not_object">The settings must be a JSON object</string>
+    <string name="error_secret_hex">The secret must be 32 hex characters (0-9, a-f).</string>
+    <string name="error_dc_entry">Datacenters: the line “%1$s” does not look like DC:IP (for example 2:149.154.167.220)</string>
+    <string name="error_dc_list">Datacenters: %1$s</string>
+    <string name="error_core_start">Start error: %1$s</string>
+    <string name="error_port_dead">The proxy did not come up: the port does not answer. Details — “Settings → Diagnostics” (last log lines).</string>
+    <string name="error_core_crash">The proxy stopped with an error: %1$s</string>
+    <string name="error_stop_timeout">The proxy did not stop within 8 seconds</string>
+    <string name="error_stopped_note">Stopped: %1$s</string>
+    <string name="error_not_running">The proxy is not running — there is nothing to reconnect</string>
+    <string name="error_reconnect">Reconnect did not complete: %1$s</string>
+    <string name="error_link_empty">Start the proxy first — the link appears after the start</string>
+    <string name="error_telegram_missing">Telegram not found — the link was copied</string>
+
+</resources>

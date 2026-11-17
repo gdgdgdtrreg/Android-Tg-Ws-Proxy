@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Тёмная тема приложения. Обычное окно (не edge-to-edge): статус-бар и
+         панель навигации системные, контент верстается между ними — так же,
+         как в Kivy-версии 2.2.x. -->
+    <style name="Theme.TgwsProxy" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:navigationBarColor">@color/bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

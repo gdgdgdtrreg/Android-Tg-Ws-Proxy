@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Все строки, которые видит пользователь. Русский — язык по умолчанию (он в
+    `values/`, без квалификатора), английский — в `values-en/`.
+
+    Правила, которых стоит держаться при правке:
+      * плейсхолдеры пишем ПОЗИЦИОННО (%1$s, %2$d) — тогда перевод можно
+        переставлять, и `getString(id, a, b)` не зависит от порядка слов;
+      * имена ошибок `error_*` совпадают с ключами, которые отдаёт Python-мост
+        (`error_key` в proxy_runner.py): перевод один, а источника два — Kotlin и ядро;
+      * сообщения `Log.*` в коде остаются русскими и сюда НЕ выносятся: это лог
+        для разработчика, а не текст интерфейса;
+      * сверить оба файла и найти забытые строки в коде помогает
+        `python3 tools/check_localization.py`.
+-->
+<resources>
+
+    <!-- =================================================================== -->
+    <!-- Приложение и плитка «Быстрых настроек»                               -->
+    <!-- =================================================================== -->
+    <string name="app_name">TG-WS-Proxy</string>
+    <!-- Подпись плитки: видна в шторке и в списке плиток при редактировании.
+         Короткая — длинную система обрежет. -->
+    <string name="tile_label">TG-WS-Proxy</string>
+    <string name="tile_running">Работает</string>
+    <string name="tile_starting">Запуск…</string>
+    <string name="tile_stopping">Остановка…</string>
+    <string name="tile_error">Ошибка: %1$s</string>
+    <string name="tile_off_address">Выключен · %1$s</string>
+    <string name="tile_off">Выключен</string>
+    <string name="tile_start_failed">не удалось запустить</string>
+    <string name="tile_added">Плитка добавлена в шторку</string>
+    <string name="tile_already_added">Плитка уже есть в шторке</string>
+    <string name="tile_not_added">Плитка не добавлена</string>
+    <string name="tile_request_rejected">Система отклонила запрос (код %1$d)</string>
+    <string name="tile_need_android13">Нужен Android 13+: добавьте плитку через редактор шторки</string>
+    <string name="tile_no_manager">Система не даёт управлять плитками — добавьте её в редакторе шторки</string>
+    <string name="tile_manual_hint">Откройте шторку → «Редактировать плитки» → TG-WS-Proxy</string>
+
+    <!-- =================================================================== -->
+    <!-- Главный экран                                                        -->
+    <!-- =================================================================== -->
+    <string name="main_status_starting">Запуск…</string>
+    <string name="main_status_running">Подключено</string>
+    <string name="main_status_stopping">Остановка…</string>
+    <string name="main_status_error">Ошибка</string>
+    <string name="main_status_stopped">Отключено</string>
+    <string name="main_service_dead">Сервис не отвечает (убит системой?).</string>
+    <string name="main_connections">Соединений: %1$d (активных %2$d, ws %3$d, http/2 %4$d, cf %5$d) · in %6$s · out %7$s</string>
+    <string name="btn_copy">копировать</string>
+    <string name="btn_telegram">В telegram</string>
+    <string name="btn_settings">настройки</string>
+    <string name="btn_about">о приложении</string>
+
+    <!-- =================================================================== -->
+    <!-- Экран «О приложении»                                                 -->
+    <!-- =================================================================== -->
+    <string name="about_title">о приложении</string>
+    <string name="about_version">Версия приложения: %1$s</string>
+    <string name="about_disclaimer">Проект не связан с Telegram Messenger Inc. и не является официальным клиентом Telegram.</string>
+    <string name="about_license_title">Лицензия приложения</string>
+    <string name="about_license_summary">GNU General Public License версии 3 или новее (GPL-3.0-or-later). Copyright (c) 2026 gdgdgdtrreg. Полный текст — ниже; тот же текст лежит в файле LICENSE исходного кода.</string>
+    <string name="about_show_license">Показать текст лицензии</string>
+    <string name="about_hide_license">Скрыть текст лицензии</string>
+    <string name="about_source_title">Исходный код</string>
+    <string name="about_source_summary">Полный соответствующий исходный код приложения — Kotlin, вендоренное Python-ядро, ресурсы и скрипты сборки — доступен в репозитории: %1$s</string>
+    <string name="about_open_repo">Открыть репозиторий</string>
+    <string name="about_no_browser">Не найдено приложение, которое может открыть ссылку — адрес репозитория показан выше.</string>
+    <string name="about_third_party_title">Сторонние компоненты</string>
+    <string name="about_third_party_summary">Ядро прокси, Chaquopy, Python-пакеты и библиотеки Android идут под своими лицензиями (MIT, MIT-0, BSD-3-Clause, Apache-2.0, MPL-2.0, PSF-2.0). Их собственные тексты лицензий и уведомления об авторских правах лежат внутри APK — в метаданных установленных пакетов; полный список — в res/raw/notices.txt и в THIRD-PARTY-NOTICES.md репозитория. Тап по строке показывает текст лицензии. Версии пакетов — те, что разрешил pip при сборке; на устройстве возможны иные минорные.</string>
+    <string name="about_icons_title">Значки</string>
+    <string name="about_icons_summary">Кружок «СТАРТ», значок уведомления и фон иконки нарисованы в этом проекте. Контуры стрелки «обновить» и бумажного самолётика для плитки — из набора Material Symbols (Apache-2.0, Copyright (c) Google).</string>
+
+    <!-- =================================================================== -->
+    <!-- Экран настроек                                                       -->
+    <!-- =================================================================== -->
+    <string name="btn_back">Назад</string>
+    <string name="settings_title">настройки</string>
+    <string name="btn_save">Сохранить</string>
+
+    <string name="section_connection">Подключение</string>
+    <string name="field_ip_port">IP-Адрес и порт:</string>
+    <string name="switch_allow_lan">Доступ из локальной сети (0.0.0.0)</string>
+    <string name="field_secret">Секрет (32 hex-символа):</string>
+    <string name="cd_generate_secret">Сгенерировать новый секрет</string>
+    <string name="field_fake_tls">Fake TLS домен (необязательно, ee-секрет):</string>
+
+    <string name="section_routing">Маршрутизация Telegram (DC -> IP)</string>
+    <string name="field_dcs_hint">Строки вида 2:149.154.167.220</string>
+    <string name="switch_force_test_dc">Тестовые датацентры (force-test-dc)</string>
+
+    <string name="section_cf">Cloudflare, HTTP/2, TLS</string>
+    <string name="switch_cf_proxy">Включить CF-Прокси</string>
+    <string name="field_cf_domains">Свои CF-домены (через запятую):</string>
+    <string name="field_cf_worker">Домены Cloudflare Worker:</string>
+    <string name="switch_h2_media">HTTP/2 мультиплексирование медиа</string>
+    <string name="switch_no_secure">Выключить TLS для CF-прокси и CF-worker</string>
+
+    <string name="section_perf">Производительность и логи</string>
+    <string name="field_buffer">Буфер, КБ:</string>
+    <string name="field_pool">Пул WS-сессий:</string>
+    <string name="switch_verbose">Подробный лог (DEBUG)</string>
+    <string name="hint_log_applies">Применяется после сохранения (работающий прокси перезапустится).</string>
+    <string name="hint_log_path">Файл пишется всегда: %1$s — внешняя папка приложения, разрешение на хранилище не нужно. Строки видны в «Диагностике», «Копировать лог» кладёт их в буфер, файл целиком забирается adb pull.</string>
+
+    <!-- =================================================================== -->
+    <!-- Диагностика                                                          -->
+    <!-- =================================================================== -->
+    <string name="section_diagnostics">Диагностика</string>
+    <string name="diag_status_running">Статус: прокси работает (%1$s).</string>
+    <string name="diag_status_starting">Статус: запускается…</string>
+    <string name="diag_status_stopping">Статус: останавливается…</string>
+    <string name="diag_status_error">Статус: ошибка — %1$s</string>
+    <string name="diag_status_stopped">Статус: выключено.</string>
+    <string name="diag_core_version">Версия прокси: %1$s</string>
+    <string name="diag_uptime">Работает: %1$d c</string>
+    <string name="diag_connections">Соединений: %1$d (активных %2$d), ошибок ws: %3$d</string>
+    <string name="diag_traffic">Трафик: in %1$s, out %2$s</string>
+    <string name="diag_log_file">Файл лога: %1$s (%2$d КБ)</string>
+    <string name="diag_log_missing">Файл %1$s ещё не создан</string>
+    <string name="diag_log_off">Файла лога пока нет (прокси ещё не запускался) — строки ниже берутся из буфера процесса</string>
+    <string name="diag_log_error">Запись лога не началась: %1$s</string>
+    <string name="diag_verbose">Подробный лог (DEBUG): %1$s</string>
+    <string name="diag_logcat">Полный лог: logcat, тег PROXY_DEBUG; последние строки — в «Диагностике»</string>
+    <string name="btn_copy_log">Копировать лог</string>
+    <string name="btn_battery">Отключить сон</string>
+
+    <!-- =================================================================== -->
+    <!-- Секция «Плитка в шторке»                                             -->
+    <!-- =================================================================== -->
+    <string name="section_tile">Плитка в шторке</string>
+    <string name="tile_help_request">Плитка TG-WS-Proxy включает и выключает прокси тапом из шторки, не открывая приложение.</string>
+    <string name="tile_help_manual">Плитка TG-WS-Proxy включает и выключает прокси тапом из шторки, не открывая приложение. Добавьте её вручную: откройте шторку, нажмите «Редактировать плитки» и перетащите TG-WS-Proxy наверх.</string>
+    <string name="btn_add_tile">Добавить плитку</string>
+
+    <!-- =================================================================== -->
+    <!-- Тосты                                                                -->
+    <!-- =================================================================== -->
+    <string name="toast_link_later">Ссылка появится после старта прокси</string>
+    <string name="toast_link_copied">Ссылка скопирована</string>
+    <string name="toast_saved_restarting">Настройки сохранены, прокси перезапускается</string>
+    <string name="toast_saved">Настройки сохранены</string>
+    <string name="toast_log_empty">Лога ещё нет: запустите прокси — строки копятся с момента старта</string>
+    <plurals name="toast_log_copied">
+        <item quantity="one">Скопирована %1$d строка лога</item>
+        <item quantity="few">Скопировано %1$d строки лога</item>
+        <item quantity="many">Скопировано %1$d строк лога</item>
+        <item quantity="other">Скопировано %1$d строк лога</item>
+    </plurals>
+
+    <!-- =================================================================== -->
+    <!-- Уведомления                                                          -->
+    <!-- =================================================================== -->
+    <string name="channel_name">Прокси</string>
+    <string name="channel_description">Состояние локального MTProto-прокси</string>
+    <string name="notif_running">Прокси работает</string>
+    <string name="notif_starting">Запуск…</string>
+    <string name="notif_stopping">Останавливаю…</string>
+    <string name="notif_error">Ошибка</string>
+    <string name="notif_stopped">Прокси остановлен</string>
+    <string name="notif_settings_error">Ошибка настроек</string>
+    <string name="notif_running_text">%1$s · in %2$s · out %3$s</string>
+    <string name="notif_network_change">Смена сети</string>
+    <string name="notif_reconnecting">Переподключение: %1$s</string>
+    <string name="action_stop">Остановить</string>
+    <string name="notif_system_stopped_title">Прокси остановлен системой</string>
+    <string name="notif_system_stopped_text">Android ограничил фоновую работу сервиса: исчерпан лимит времени или запрещён запуск из фона. Откройте приложение и запустите прокси снова.</string>
+
+    <!-- =================================================================== -->
+    <!-- Состояние сети (подпись уведомления при переподключении)             -->
+    <!-- =================================================================== -->
+    <string name="net_none">нет сети</string>
+    <string name="net_unknown">сеть не определена</string>
+    <string name="net_wifi">Wi-Fi</string>
+    <string name="net_cellular">мобильные данные</string>
+    <string name="net_ethernet">Ethernet</string>
+    <string name="net_vpn">VPN</string>
+    <string name="net_other">другая сеть</string>
+    <string name="net_no_internet">%1$s без доступа в интернет</string>
+    <string name="net_transition">%1$s → %2$s</string>
+
+    <!-- =================================================================== -->
+    <!-- Мелкие значения                                                      -->
+    <!-- =================================================================== -->
+    <string name="value_on">включён</string>
+    <string name="value_off">выключен</string>
+    <string name="value_none">—</string>
+
+    <!-- =================================================================== -->
+    <!-- Ошибки, которые показывает приложение                                -->
+    <!--                                                                      -->
+    <!-- Часть ключей приходит из Python-ядра (поле `error_key` в ответах      -->
+    <!-- proxy_runner.py) — перевод для них живёт здесь же, см. Messages.kt.   -->
+    <!-- =================================================================== -->
+    <!-- проверка настроек перед стартом (Kotlin) -->
+    <string name="error_port_range">Порт вне диапазона 1…65535.</string>
+    <string name="error_dc_line">Строка DC без «:» — %1$s</string>
+    <!-- отказ системы поднять сервис (Kotlin) -->
+    <string name="error_start_denied">Android запретил %1$s из фонового режима — откройте приложение.</string>
+    <string name="error_no_permission">Нет разрешения, чтобы %1$s: %2$s</string>
+    <string name="error_generic">Не удалось %1$s: %2$s</string>
+    <string name="what_start">запустить прокси</string>
+    <string name="what_restart">перезапустить прокси</string>
+    <string name="what_stop">остановить прокси</string>
+    <!-- мост в Python недоступен (Kotlin) -->
+    <string name="error_python_unavailable">Python-ядро недоступно: %1$s</string>
+    <string name="error_stop_failed">Ошибка остановки: %1$s</string>
+    <!-- ключи из Python-ядра (proxy_runner.py) -->
+    <string name="error_settings_json">Не удалось разобрать настройки: %1$s</string>
+    <string name="error_settings_not_object">Настройки должны быть объектом JSON</string>
+    <string name="error_secret_hex">Секрет должен быть 32 hex-символа (0-9, a-f).</string>
+    <string name="error_dc_entry">Датацентры: строка «%1$s» не похожа на DC:IP (например 2:149.154.167.220)</string>
+    <string name="error_dc_list">Датацентры: %1$s</string>
+    <string name="error_core_start">Ошибка запуска: %1$s</string>
+    <string name="error_port_dead">Прокси не поднялся: порт не отвечает. Подробности — «Настройки → Диагностика» (последние строки лога).</string>
+    <string name="error_core_crash">Прокси остановился с ошибкой: %1$s</string>
+    <string name="error_stop_timeout">Прокси не остановился за 8 секунд</string>
+    <string name="error_stopped_note">Остановлено: %1$s</string>
+    <string name="error_not_running">Прокси не запущен — переподключать нечего</string>
+    <string name="error_reconnect">Переподключение не выполнено: %1$s</string>
+    <string name="error_link_empty">Сначала запустите прокси — ссылка появится после старта</string>
+    <string name="error_telegram_missing">Telegram не найден — ссылка скопирована</string>
+
+</resources>

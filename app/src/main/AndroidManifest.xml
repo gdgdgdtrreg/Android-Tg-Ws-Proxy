@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Прокси: слушаем локальный порт и сами ходим в сеть -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- foreground-сервис: прокси гоняет трафик.
+         dataSync — для Android 10…13, specialUse — для Android 14+ (у него нет
+         суточного лимита, который у dataSync отнимает прокси через ~6 часов). -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- чтобы прокси не засыпал с погашенным экраном -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- автозапуск после перезагрузки (в p4a этот приёмник добавить было нельзя) -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TgwsProxy"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Прокси-сервис: Python-ядро живёт в ЭТОМ же процессе, поэтому
+             android:process НЕ указываем (иначе не будет доступа к ядру).
+
+             Типов объявлено два, потому что запускаем сервис разными типами на
+             разных версиях (см. ProxyService.foregroundServiceType()):
+             * Android 14+ — specialUse: у него нет суточного лимита, а dataSync
+               на Android 15+ разрешён лишь ~6 часов в сутки, после чего система
+               останавливает сервис;
+             * Android 10…13 — dataSync: specialUse там ещё не существует.
+             Свойство PROPERTY_SPECIAL_USE_FGS_SUBTYPE объясняет назначение
+             специального типа (его спрашивает Google Play). -->
+        <service
+            android:name=".ProxyService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync|specialUse"
+            android:stopWithTask="false">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="local_mtproto_proxy_for_telegram" />
+        </service>
+
+        <!-- Плитка «Быстрых настроек»: тап включает/выключает прокси, не
+             открывая приложение. android:process НЕ указываем — плитке нужен
+             доступ к Python-ядру в этом же процессе (см. ProxyEngine).
+             permission=BIND_QUICK_SETTINGS_TILE обязателен: без него SystemUI
+             не считает сервис плиткой. -->
+        <service
+            android:name=".ProxyTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_tile_proxy"
+            android:label="@string/tile_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <!-- Плитка-переключатель (API 33+): говорим системе, что тап меняет
+                 состояние, а не открывает экран. -->
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
+
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

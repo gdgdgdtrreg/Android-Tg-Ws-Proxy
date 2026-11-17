@@ -1,0 +1,103 @@
+TG-WS-Proxy for Android - third-party notices
+=============================================
+
+The application as a whole is licensed under the GNU General Public License
+version 3 or later (GPL-3.0-or-later). Copyright (c) 2026 gdgdgdtrreg.
+The full text is in res/raw/gpl3.txt of this APK and in the LICENSE file of the
+source repository.
+
+The complete corresponding source code of this application (Kotlin sources, the
+vendored Python core, resources and build scripts) is available at:
+https://github.com/gdgdgdtrreg/Tg-Ws-Proxy-Android
+
+
+1. Vendored proxy core
+----------------------
+Flowseal/tg-ws-proxy 1.11.2 - MIT - Copyright (c) 2026 Flowseal
+https://github.com/Flowseal/tg-ws-proxy
+
+Vendored unmodified in app/src/main/python/proxy/. The bridge between Kotlin and
+the core (app/src/main/python/proxy_runner.py) is written in this project and is
+not part of the vendored directory.
+
+Full license text: res/raw/mit.txt
+
+
+2. Chaquopy (Python for Android)
+--------------------------------
+Chaquopy 17.0.0 - MIT - Copyright (c) 2017-2025 Chaquo Ltd and contributors
+https://chaquo.com/chaquopy/
+
+The APK contains the CPython interpreter, libchaquopy_java.so, the standard
+library and the pip packages listed in section 3 (lib/<abi>/ and
+assets/chaquopy/).
+
+Full license text: res/raw/mit.txt
+
+
+3. Python packages
+------------------
+Requested in app/build.gradle.kts: httpx[http2]==0.28.1, cryptography==42.0.8,
+certifi. The versions below are the ones pip resolved on CPython 3.11; Chaquopy
+may resolve slightly different versions for a given ABI and Python version.
+
+Each package's own license text and copyright notice ship inside this APK, in the
+metadata of the installed package (<name>-<version>.dist-info/LICENSE within
+assets/chaquopy/).
+
+  httpx              0.28.1      BSD-3-Clause          https://github.com/encode/httpx
+  httpcore           1.0.9       BSD-3-Clause          https://github.com/encode/httpcore
+  h11                0.16.0      MIT                   https://github.com/python-hyper/h11
+  h2                 4.4.1       MIT                   https://github.com/python-hyper/h2
+  hpack              4.2.0       MIT                   https://github.com/python-hyper/hpack
+  hyperframe         6.1.0       MIT                   https://github.com/python-hyper/hyperframe
+  anyio              4.16.0      MIT                   https://github.com/agronholm/anyio
+  idna               3.20        BSD-3-Clause          https://github.com/kjd/idna
+  typing_extensions  4.16.0      PSF-2.0               https://github.com/python/typing_extensions
+  cryptography       42.0.8      Apache-2.0 OR BSD-3   https://github.com/pyca/cryptography
+  cffi               2.1.1       MIT-0                 https://foss.heptapod.net/pypy/cffi
+  pycparser          3.12        BSD-3-Clause          https://github.com/eliben/pycparser
+  certifi            2026.10.23  MPL-2.0               https://github.com/certifi/python-certifi
+
+certifi (MPL-2.0) is a bundle of trusted root certificates (cacert.pem). The
+MPL-2.0 copyleft applies per file: it covers certifi itself, whose source is
+available at the URL above, and does not extend to this application's code.
+
+cryptography is the only package with native code (OpenSSL and Rust). Chaquopy 17
+installs packages from prebuilt wheels only, which is why the version is pinned
+to 42.0.8.
+
+Full license texts: res/raw/mit.txt, res/raw/mit0.txt, res/raw/bsd3_clause.txt,
+res/raw/apache2.txt, res/raw/psf2.txt, res/raw/mpl2.txt
+
+
+4. Android and Kotlin libraries (pulled by Gradle)
+--------------------------------------------------
+Android Gradle Plugin 8.13.0, Gradle 8.13, Kotlin 2.2.20,
+kotlinx-coroutines-android 1.9.0, AndroidX (core-ktx 1.15.0, activity-compose
+1.9.3, lifecycle-runtime-ktx 2.8.7), Jetpack Compose (BOM 2024.12.01) -
+Apache-2.0. Parts of AndroidX and Compose originate from the Android Open Source
+Project (Apache-2.0); their NOTICE files are inside the respective artifacts.
+
+Full license text: res/raw/apache2.txt
+
+JUnit 4.13.2 - EPL-1.0 - declared as testImplementation only and not packaged
+into the APK.
+
+
+5. Icons
+--------
+The power circle, the notification icon and the launcher background are drawn in
+this project (app/src/main/res/drawable/, app/src/main/res/mipmap-anydpi*/).
+The "refresh" arrow and the paper plane outlines used for the Quick Settings tile
+come from Material Symbols - Apache-2.0, Copyright (c) Google -
+https://fonts.google.com/icons
+
+
+6. Other
+--------
+This application is not affiliated with Telegram Messenger Inc. and is not an
+official Telegram client. The default DC addresses (2:149.154.167.220 and
+4:149.154.167.220) are public Telegram servers taken from the core's
+configuration. The proxy secret is generated on the device and is not sent
+anywhere except to the proxy itself.

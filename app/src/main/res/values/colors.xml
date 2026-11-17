@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- палитра перенесена из Kivy-версии (main.py) -->
+    <color name="bg">#1E1E1E</color>
+    <color name="card">#2B2B2B</color>
+    <color name="field">#232323</color>
+    <color name="accent">#3390EC</color>
+    <color name="good">#00FF00</color>
+</resources>
